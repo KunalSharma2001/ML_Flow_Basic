@@ -17,6 +17,13 @@ from mlflow.models.signature import infer_signature
 import mlflow.sklearn
 
 import logging
+import dagshub
+dagshub.init(repo_owner='KunalSharma2001', repo_name='ML_Flow_Basic', mlflow=True)
+
+import mlflow
+with mlflow.start_run():
+  mlflow.log_param('parameter name', 'value')
+  mlflow.log_metric('metric name', 1)
 
 logging.basicConfig(level=logging.WARN) 
 logger = logging.getLogger(__name__)
@@ -75,9 +82,6 @@ if __name__ == "__main__":
         mlflow.log_metric("r2", r2)
         mlflow.log_metric("mae", mae)
 
-        predictions = lr.predict(train_x)
-        signature = infer_signature(train_x, predictions)
-
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         # this code for uri is to store the log values in the remote server. if we dont use uri, it will save the logs in a csv file in a Local Storage
 
@@ -88,7 +92,6 @@ if __name__ == "__main__":
             # please refer to the doc for more information:
             # https://mlflow.org/docs/latest/model-registry.html#api-workflow
             mlflow.sklearn.log_model(
-                lr, "model", registered_model_name="ElasticnetWineModel", signature=signature
-            )
+                lr, "model", registered_model_name="ElasticnetWineModel")
         else:
-            mlflow.sklearn.log_model(lr, "model", signature=signature)
+            mlflow.sklearn.log_model(lr, "model")
