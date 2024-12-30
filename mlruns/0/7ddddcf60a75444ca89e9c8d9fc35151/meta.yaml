@@ -1,0 +1,15 @@
+artifact_uri: file:///G:/ML%20Ops/ML%20Flow/mlruns/0/7ddddcf60a75444ca89e9c8d9fc35151/artifacts
+end_time: 1735392550701
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7ddddcf60a75444ca89e9c8d9fc35151
+run_name: secretive-pig-634
+run_uuid: 7ddddcf60a75444ca89e9c8d9fc35151
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1735392542706
+status: 3
+tags: []
+user_id: msi1
